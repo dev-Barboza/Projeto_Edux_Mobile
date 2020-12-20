@@ -1,48 +1,48 @@
-import React, {useState} from 'react';
-import { StyleSheet, Text, View , TextInput , TouchableOpacity, Image } from 'react-native';
+import React, {useState , useEffect} from 'react';
+import { useFirebaseApp } from 'reactfire';
+import { useHistory } from  'react-router-dom';
+import { StyleSheet, Text, View , TextInput , TouchableOpacity, Image, AppRegistry } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import firebase from '../../utils/firebaseConfig';
 
-const Login = ({navigation}) =>{
 
+
+
+
+
+const Login = ({navigation}) => {
+    const history = useHistory();
+    
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-    const salvarToken = async (value) => {
-        try {
-          await AsyncStorage.setItem('@jwt', value)
-        } catch (e) {
-          // saving error
-        }
-      }
+    const logar = (event) => {
+        event.preventDefault();
 
-    const Entrar = () => {
-        
-        const corpo = {
-            email : email,
-            senha: senha,
-        }
+        console.log(`${email} - ${senha}`);
 
-        fetch('http://192.168.1.108:5000/api/login' , {
-            method : 'POST',
-            headers: {
-                'Content-type' : 'application/json'
-            },
-            body : JSON.stringify(corpo)
+        firebase.auth().signInWithEmailAndPassword(email, senha)
+        .then(result => {
+            localStorage.setItem('Edux', result.user.refreshToken);
+            alert('Seja bem vindo ')
+            //navega para a página 
+
+            navigation.navigate('BottomTabNavigator');
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            if(data.status != 404){
-                alert('Seja bem vindo')
-                salvarToken(data.token)
+        .catch(error => {
+            alert('Email ou Senha incorreto ')
 
-                navigation.push('Autenticado')
-            }else{
-                alert('Email ou senha inválidos! :( ')
-            }
+            
+            console.error(error);
         })
-    }
+}
+
+  
+
+    
+  
+    
 
     return(
         <View style={styles.container}>
@@ -54,13 +54,13 @@ const Login = ({navigation}) =>{
 
             <TextInput
                 style={styles.input}
-                onChangeText={text => setEmail(text)}
+                onChangeText={event => setEmail(event)}
                 value={email}
                 placeholder= 'Digite seu email '
             />
             <TextInput
                 style={styles.input}
-                onChangeText={text => setSenha(text)}
+                onChangeText={event => setSenha(event)}
                 value={senha}
                 secureTextEntry={true}
                 placeholder= 'Digite sua Senha '
@@ -68,7 +68,7 @@ const Login = ({navigation}) =>{
 
             <TouchableOpacity
                 style={styles.button}
-                onPress={Entrar}
+                onPress={ event => logar(event) }
             >
                 <Text style={styles.textbuttom}>Entrar</Text>
             </TouchableOpacity>
@@ -134,5 +134,6 @@ const styles = StyleSheet.create({
     }
    
   });
+
 
 export default Login;

@@ -48,7 +48,7 @@ export default class Turmas extends Component {
   render() {
       return (
           <View style={styles.container}>
-            
+            <Menu/>
        
       
        <View  style={styles.rankings} > 
@@ -75,7 +75,7 @@ export default class Turmas extends Component {
               </TouchableOpacity>
             )
         }}/>
-        
+        <Rodape/>
       </View>
     );
 }

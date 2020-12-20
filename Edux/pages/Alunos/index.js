@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 
-export default class Turmas extends Component {
+export default class Users extends Component {
 
     
 
@@ -20,10 +20,16 @@ export default class Turmas extends Component {
     super(props);
     this.state = {
         data: [
-            {id:1, color:"#00C2EE", icon:"https://cdn.icon-icons.com/icons2/2735/PNG/128/knowledge_icon_175709.png", name: "MULTIMÍDIA", tags:['Alunos']},
-            {id:2, color:"#9200D6", icon:"https://cdn.icon-icons.com/icons2/2735/PNG/128/graduation_cap_icon_175700.png", name: "DESENVOLVIMENTO DE SISTEMAS", tags:['Alunos']}, 
-            {id:3, color:"#F9E800", icon:"https://cdn.icon-icons.com/icons2/2735/PNG/128/stationery_compass_icon_175719.png", name: "REDES", tags:['Alunos']}, 
-        ]
+            {id:1, color:"#00C2EE", icon:"https://www.flaticon.com/svg/static/icons/svg/3923/3923664.svg", name: "User 1", tags:['Turma', 'Notas', 'Melhores pontuações']},
+            {id:2, color:"#9200D6", icon:"https://www.flaticon.com/svg/static/icons/svg/3922/3922849.svg", name: "User 2", tags:['Turma', 'Notas', 'Melhores pontuações']}, 
+            {id:3, color:"#F9E800", icon:"https://www.flaticon.com/svg/static/icons/svg/3923/3923664.svg", name: "User 3", tags:['Turma', 'Notas', 'Melhores pontuações']}, 
+            {id:4, color:"#FF271C", icon:"https://www.flaticon.com/svg/static/icons/svg/3922/3922849.svg", name: "User 4", tags:['Turma', 'Notas', 'Melhores pontuações']}, 
+            {id:5, color:"#00C2EE", icon:"https://www.flaticon.com/svg/static/icons/svg/3922/3922849.svg", name: "User 5", tags:['Turma', 'Notas', 'Melhores pontuações']}, 
+            {id:6, color:"#9200D6", icon:"https://www.flaticon.com/svg/static/icons/svg/3923/3923664.svg", name: "User 6", tags:['Turma', 'Notas', 'Melhores pontuações']}, 
+            {id:7, color:"#F9E800", icon:"https://www.flaticon.com/svg/static/icons/svg/3922/3922849.svg", name: "User 7", tags:['Turma', 'Notas', 'Melhores pontuações']}, 
+            {id:8, color:"#FF271C", icon:"https://www.flaticon.com/svg/static/icons/svg/3923/3923664.svg", name: "User 8", tags:['Turma', 'Notas', 'Melhores pontuações']},
+            {id:9, color:"#00C2EE", icon:"https://www.flaticon.com/svg/static/icons/svg/3922/3922849.svg", name: "User 9", tags:['Turma', 'Notas', 'Melhores pontuações']},
+        ],
     };
 }
 
@@ -48,11 +54,11 @@ export default class Turmas extends Component {
   render() {
       return (
           <View style={styles.container}>
-            
+            <Menu/>
        
       
        <View  style={styles.rankings} > 
-        <Text style={styles.ranking}> TURMAS</Text>
+        <Text style={styles.ranking}> ALUNOS</Text>
         </View>
       
 
@@ -75,7 +81,7 @@ export default class Turmas extends Component {
               </TouchableOpacity>
             )
         }}/>
-        
+        <Rodape/>
       </View>
     );
 }
@@ -164,7 +170,7 @@ const styles = StyleSheet.create({
   ranking :{
     color : '#9200d6',
     marginTop: 100,
-    marginBottom: 5,
+    marginBottom: 10,
     fontFamily: 'Titillium Web',
     fontWeight: '900',
     fontstyle: 'normal',
