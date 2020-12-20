@@ -10,7 +10,8 @@ import {
     TextInput,
     FlatList
 } from 'react-native';
-
+import Rodape from '../../components/rodape';
+import Menu from '../../components/menu';
 
 export default class Turmas extends Component {
 
@@ -47,6 +48,7 @@ export default class Turmas extends Component {
 
   render() {
       return (
+            
           <View style={styles.container}>
             <Menu/>
        

@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View , TextInput , TouchableOpacity, Image,  Button  } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import Rodape from '../../components/rodape';
+import Menu from '../../components/menu';
 
 
 

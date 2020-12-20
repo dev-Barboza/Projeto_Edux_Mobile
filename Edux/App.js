@@ -76,11 +76,12 @@ const BottomTabNavigator = () => {
   )
 }
 
-export default function App({ navigation }) {
+export default function App({navigation}) {
   return (
     <NavigationContainer>
       <Drawer.Navigator>     
         <Drawer.Screen name="Login" component={Login} options={{ headerShown: false, drawerLabel: Hidden }} />
+        <Drawer.Screen name="Objetivos" component={Objetivos} options={{ headerShown: false, drawerLabel: Hidden }} />
         <Drawer.Screen name="BottomTabNavigator" component={BottomTabNavigator} options={{ drawerLabel: "Ranking" }} />
        
 
