@@ -1,9 +1,10 @@
 import React, {useState , useEffect} from 'react';
-import { useFirebaseApp } from 'reactfire';
+
 import { useHistory } from  'react-router-dom';
 import { StyleSheet, Text, View , TextInput , TouchableOpacity, Image, AppRegistry } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import firebase from '../../utils/firebaseConfig';
+
 
 
 

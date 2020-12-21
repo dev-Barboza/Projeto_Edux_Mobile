@@ -6,7 +6,6 @@ import Menu from '../../components/menu';
 
 const ranking = ({navigation}) =>{
     
-  
 
     return(
         

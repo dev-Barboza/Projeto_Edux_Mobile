@@ -23,7 +23,7 @@ export default class Turmas extends Component {
         data: [
             {id:1, color:"#00C2EE", icon:"https://cdn.icon-icons.com/icons2/2735/PNG/128/knowledge_icon_175709.png", name: "MULTIMÍDIA", tags:['Alunos']},
             {id:2, color:"#9200D6", icon:"https://cdn.icon-icons.com/icons2/2735/PNG/128/graduation_cap_icon_175700.png", name: "DESENVOLVIMENTO DE SISTEMAS", tags:['Alunos']}, 
-            {id:3, color:"#F9E800", icon:"https://cdn.icon-icons.com/icons2/2735/PNG/128/stationery_compass_icon_175719.png", name: "REDES", tags:['Alunos']}, 
+            {id:3, color:"#F9E800", icon:"https://cdn.icon-icons.com/icons2/2735/PNG/128/stationery_compass_icon_175719.png", name: "REDES", tags:['Alunos'] }, 
         ]
     };
 }
@@ -61,6 +61,7 @@ export default class Turmas extends Component {
         <FlatList 
           style={styles.notificationList}
           data={this.state.data}
+          onPress={() =>{}}
           keyExtractor= {(item) => {
               return item.id;
             }}
@@ -77,7 +78,7 @@ export default class Turmas extends Component {
               </TouchableOpacity>
             )
         }}/>
-        <Rodape/>
+        
       </View>
     );
 }

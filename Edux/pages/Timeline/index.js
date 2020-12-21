@@ -1,15 +1,43 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View , TextInput , TouchableOpacity, Image,  Button  } from 'react-native';
+import { StyleSheet, Text, View , TextInput , TouchableOpacity, Image,  Button , onChangeText, Alert  } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Rodape from '../../components/rodape';
 import Menu from '../../components/menu';
+import {firebase } from '../../utils/firebaseConfig';
+import { useEffect } from 'react';
+
 
 
 
 
     
     const Timeline =  ({navigation}) =>{
-        
+
+        const [state, setstate] = useState({
+            descricao:''
+        })
+
+        const limparCampos = () => {
+            
+            setstate('');
+            
+        } 
+
+        const handleChangeText = (descricao, value)=>{
+            setstate({ ...state, [descricao]: value})
+        }
+
+        const createNewDica = async () =>{
+            if (state.descricao === ''){
+                alert('Digite uma dic')
+            }else{
+
+                await  firebase.db.collection('dicas').add({
+                    descricao: state.descricao
+                })
+                alert("Salvo")
+            }
+        }
       
                     return(
                         <View>
@@ -18,9 +46,11 @@ import Menu from '../../components/menu';
                        <Text style={styles.ranking}> POSTAGENS</Text>
                        </View>
                        
+                       
                        <TextInput
                         style={{ height: 70, borderColor: '#9200d6', borderWidth: 1, width:300, marginLeft: 30 }}
-                        onChangeText={text => onChangeText(text)}
+                        //value={}
+                        onChangeText={(value) => handleChangeText('descricao', value)}
                         placeholder="     Qual sua dica de hoje?"
                         />
                        <View style={styles.fixToText}>
@@ -32,7 +62,7 @@ import Menu from '../../components/menu';
                             <Button
                              style={styles.botao}
                             title="Postar"
-                            onPress={() => Alert.alert('Right button pressed')}
+                            onPress={()=>alert("Dica adicionada")}
                             />
                         </View>
 
@@ -56,10 +86,18 @@ import Menu from '../../components/menu';
                         uri:
                         'https://www.flaticon.com/svg/static/icons/svg/446/446072.svg'
                         }}
+
                     />
+
+                    
+                    
                         </TouchableOpacity>
+                        
+                        
                         </View>
 
+                        
+
                        <br/>
                        <br/>
                        <br/>
@@ -68,22 +106,10 @@ import Menu from '../../components/menu';
                        <br/>
                        <br/>
                        <br/>
-                        <Rodape style={{position: 'fixed'}}/>
-                            </View>
 
-
-
-
-
-
-
-
-
-
-
-          
-    
-    
+                       
+                        
+                </View>
 
     )
 

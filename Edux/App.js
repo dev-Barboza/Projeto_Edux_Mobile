@@ -27,6 +27,7 @@ import Ranking from './pages/Ranking';
 import Objetivos from './pages/Objetivos';
 import Turmas from './pages/Turmas';
 import Timeline from './pages/Timeline';
+import Alunos from './pages/Alunos';
 
 const Hidden = () => {
   return null;
@@ -65,7 +66,7 @@ const BottomTabNavigator = () => {
         },
       }
       }>
-      <Tab.Screen name="Início" component={Ranking} />
+      <Tab.Screen name="Início" component={Timeline} />
 
       <Tab.Screen name="Turmas" component={Turmas} />
 
@@ -76,6 +77,10 @@ const BottomTabNavigator = () => {
   )
 }
 
+
+
+
+
 export default function App({navigation}) {
   return (
     <NavigationContainer>
@@ -83,6 +88,7 @@ export default function App({navigation}) {
         <Drawer.Screen name="Login" component={Login} options={{ headerShown: false, drawerLabel: Hidden }} />
         <Drawer.Screen name="Objetivos" component={Objetivos} options={{ headerShown: false, drawerLabel: Hidden }} />
         <Drawer.Screen name="BottomTabNavigator" component={BottomTabNavigator} options={{ drawerLabel: "Ranking" }} />
+        
        
 
 
